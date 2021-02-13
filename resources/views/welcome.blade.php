@@ -61,7 +61,7 @@
               <p class="lead">Penyakit <b class="text-danger" >Demam Dengue</b> merupakan penyakit infeksi yang disebabkan oleh virus dengue dan ditularkan melalui gigitan nyamuk Aedes Aegepty dan Aedes Albopictus.</p>
               <hr class="my-4">
               <p>Anda merasakan beberapa keluhan terkait <b class="text-danger" >Demam Dengue</b> ? Silahkan berkonsultasi melalui platform ini .</p>
-              <a class="btn btn-danger btn-lg" href="#" role="button">Konsultasi</a>
+              <a class="btn btn-danger btn-lg" href="{{ route('konsultasi') }}" role="button">Konsultasi</a>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
               <div class="card-body">
                 <!-- <h5 class="card-title">Special title treatment</h5> -->
                 <p class="card-text">@if ($dbd1) {!! \Illuminate\Support\Str::limit($dbd1->deskripsi, 200, $end='...') !!} @endif</p>
-                <a href="#" class="btn btn-danger">Ketahui lebih lanjut</a>
+                <a href="{{ route('dbdi') }}" class="btn btn-danger">Ketahui lebih lanjut</a>
               </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
             <div class="card-body">
               <!-- <h5 class="card-title">Special title treatment</h5> -->
               <p class="card-text">@if ($dbd2) {!! \Illuminate\Support\Str::limit($dbd2->deskripsi, 200, $end='...') !!} @endif</p>
-              <a href="#" class="btn btn-danger">Ketahui lebih lanjut</a>
+              <a href="{{ route('dbdii') }}" class="btn btn-danger">Ketahui lebih lanjut</a>
             </div>
           </div>
       </div>
@@ -103,7 +103,7 @@
           <div class="card-body">
             <!-- <h5 class="card-title"></h5> -->
             <p class="card-text">@if ($dbd3) {!! \Illuminate\Support\Str::limit($dbd3->deskripsi, 200, $end='...') !!} @endif</p>
-            <a href="#" class="btn btn-danger">Ketahui lebih lanjut</a>
+            <a href="{{ route('dbdiii') }}" class="btn btn-danger">Ketahui lebih lanjut</a>
           </div>
         </div>
     </div>
