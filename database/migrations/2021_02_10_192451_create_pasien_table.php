@@ -17,14 +17,13 @@ class CreatePasienTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('alamat');
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('gender');
             $table->integer('usia');
-            $table->enum('satuan_usia', ['bulan', 'tahun']);
+            $table->string('satuan');
             $table->string('pekerjaan')->nullable();
             $table->string('nomor_hp')->nullable();
             $table->unsignedBigInteger('penyakit_id');
             $table->timestamps();
-            $table->foreign('penyakit_id')->references('id')->on('penyakits');
         });
     }
 

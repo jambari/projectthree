@@ -46,7 +46,26 @@ class Pasien extends Model
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
+    public function getPenyakitIdAttribute($value)
+    {
+      if ($value==1) {
+        $value = "BDB Tingkat I";
+        return $value;
+      }
 
+      if ($value==2) {
+        $value = "BDB Tingkat II";
+        return $value;
+      }
+      if ($value==3) {
+        $value = "BDB Tingkat III";
+        return $value;
+      }
+      if ($value==4) {
+        $value = "Negatif DBD";
+        return $value;
+      }
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

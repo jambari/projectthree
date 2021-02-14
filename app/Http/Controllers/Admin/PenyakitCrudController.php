@@ -47,6 +47,8 @@ class PenyakitCrudController extends CrudController
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
          $this->crud->addColumn('nama_penyakit');
+         //$this->crud->allowAccess('details_row');
+         //$this->crud->enableDetailsRow();
 
 
     }
@@ -133,5 +135,11 @@ class PenyakitCrudController extends CrudController
       $term = $request->input('term');
       $options = App\Models\Penyakit::where('nama_penyakit', 'like', '%'.$term.'%')->get()->pluck('nama_penyakit', 'id');
       return $options;
+    }
+
+    public function showDetailsRow($id)
+    {
+      $penyakit = $this->crud->getEntry($id);
+      return view('details.penyakit')->with(compact('penyakit'));
     }
 }

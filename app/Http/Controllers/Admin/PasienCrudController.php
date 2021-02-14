@@ -21,36 +21,44 @@ class PasienCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
     {
         CRUD::setModel(\App\Models\Pasien::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/pasien');
-        CRUD::setEntityNameStrings('pasien', 'pasiens');
+        CRUD::setEntityNameStrings('pengguna', 'pengguna');
     }
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
+        //CRUD::setFromDb(); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+         $this->crud->addColumns(['nama','alamat','gender','usia', 'satuan','penyakit_id','nomor_hp', 'pekerjaan',  ]);
+         $this->crud->setColumnDetails('gender', ['label' => 'jenis kelamin']);
+         $this->crud->setColumnDetails('satuan', ['label' => 'Ket']);
+         $this->crud->setColumnDetails('nomor_hp', ['label' => 'HP']);
+         $this->crud->setColumnDetails('penyakit_id', ['label' => 'Penyakit', 'class' => 'bg-danger']);
+         $this->crud->removeButtons(['create','update']);
+         $this->crud->enableExportButtons();
+         $this->crud->disableResponsiveTable();
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -63,13 +71,13 @@ class PasienCrudController extends CrudController
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
