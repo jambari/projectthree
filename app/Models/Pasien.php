@@ -66,6 +66,11 @@ class Pasien extends Model
         return $value;
       }
     }
+
+    public function getBerobatAttribute($value)
+    {
+      return $value ? 'sudah' : 'belum';
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

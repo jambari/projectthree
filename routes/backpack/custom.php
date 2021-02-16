@@ -21,4 +21,5 @@ Route::group([
     Route::get('relasi/ajax-penyakit-options', 'RelasiCrudController@penyakitOptions');
     Route::crud('relasi', 'RelasiCrudController');
     Route::crud('pasien', 'PasienCrudController');
+    Route::get('pasien/{id}/berobat', 'pasienCrudController@berobat');
 }); // this should be the absolute last line of this file

@@ -21,6 +21,7 @@ Route::get('/dbdiii', [HomeController::class, 'dbdiii'])->name('dbdiii');
 Route::get('/konsultasi', [HomeController::class, 'konsultasi'])->name('konsultasi');
 Route::post('/analisis', [HomeController::class, 'analisis'])->name('analisis');
 
+
 // Route::get('/admin/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

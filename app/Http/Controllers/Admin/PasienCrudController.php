@@ -46,14 +46,21 @@ class PasienCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
-         $this->crud->addColumns(['nama','alamat','gender','usia', 'satuan','penyakit_id','nomor_hp', 'pekerjaan',  ]);
+         $this->crud->addColumns(['nama','alamat','gender','usia', 'satuan','penyakit_id','nomor_hp',
+         'pekerjaan','berobat', 'created_at', 'updated_at' ]);
          $this->crud->setColumnDetails('gender', ['label' => 'jenis kelamin']);
          $this->crud->setColumnDetails('satuan', ['label' => 'Ket']);
          $this->crud->setColumnDetails('nomor_hp', ['label' => 'HP']);
+         $this->crud->setColumnDetails('created_at', ['label' => 'tanggal konsul']);
+         $this->crud->setColumnDetails('updated_at', ['label' => 'tanggal berobat']);
          $this->crud->setColumnDetails('penyakit_id', ['label' => 'Penyakit', 'class' => 'bg-danger']);
          $this->crud->removeButtons(['create','update']);
          $this->crud->enableExportButtons();
          $this->crud->disableResponsiveTable();
+         $this->crud->setPageLengthMenu(5);
+         $this->crud->allowAccess('berobat');
+         $this->crud->addButtonFromView('line', 'berobat', 'berobat', 'beginning');
+
     }
 
     /**
@@ -84,5 +91,13 @@ class PasienCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    public function berobat($id)
+    {
+      $pasien = $this->crud->getEntry($id);
+      $pasien->berobat = 1;
+      $pasien->save();
+      return back();
     }
 }
